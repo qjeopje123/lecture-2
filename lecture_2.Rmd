@@ -1,0 +1,89 @@
+---
+title: "lecture 2"
+author: "Nai-Wei-Hsu"
+date: "2017年3月15日"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 資料分析步驟
+* 資料輸入
+* 資料清理
+* 資料探索
+    + 提出問題
+    + 繪製圖表或進行數據處理
+    + 提出新問題
+* 結論  
+
+## R 的進階繪圖
+- 安裝套件ggplot2
+
+-  `install.packages("ggplot2")`
+```{r message=FALSE}
+
+```
+
+## 載入套件ggplot2
+```{r}
+library(ggplot2)
+```
+ 
+## ggplot2 introduction
+- ggplot2 相較於basic plot 較為直覺
+- 藉由圖層疊加方式來繪圖
+- 由一個基底 ggplot繪各種圖形
+
+## example
+- 由玩具資料diamonds為例
+```{r echo=TRUE}
+data(diamonds)
+ggplot(data=diamonds)+
+  geom_point(aes(x=carat,y=price))
+```
+
+## more about ggplot2
+- R 的包網上都有introduction
+[ggplot2 introduction](http://docs.ggplot2.org/current/)
+
+## histogram
+- 利用ggplot2 draw histogram
+```{r echo=TRUE}
+ggplot(data=diamonds)+
+  geom_histogram(aes(x=carat))
+```
+
+## histogram(2)
+- 利用iris 
+- 透過facet_wrap()納入類別變數展開
+```{r}
+ggplot(data=iris,aes(x=Sepal.Length))+
+  geom_histogram()+
+  facet_wrap(~Species)
+```
+
+## boxplot
+```{r}
+ggplot(iris,aes(x=Species,y=Sepal.Length))+
+  geom_boxplot()
+```
+
+## barplot
+```{r}
+ggplot(mtcars,aes(gear))+
+  geom_bar()
+```
+
+## R 的程式書寫方式
+- 載入套件
+- 自訂函數
+- 輸入資料
+- 運算處理
+
+## 迴圈介紹
+- for
+- if
+- repeat
+- while
